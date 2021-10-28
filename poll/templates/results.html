@@ -1,0 +1,44 @@
+{% extends "base_layout.html" %}
+
+{% block title %}Results{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 ">
+        <div class="panel-heading">
+                <h3 class="panel-title">Poll Result</h3>
+        </div>
+        <div class="panel panel-default result">
+            <div class="panel-body">
+                <h4>Max Poll: {{ maxpoll }}</h4>
+            </div>
+            <div class="barchart">
+                <table id="bar-table">
+                    {% for option,percent in option_percent %}
+                    <tr>
+                        <td class="barchart-col1">{{option}}</td>
+                        <td>
+                            <div class="container-bar">
+                                 <div class="skills" style="width:{{percent}}%;background-color:green;">{{percent}}%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="panel-body">
+                <h4>{{ poll.question }}</h4>
+            </div>
+            <ul class="list-group">
+                {% for option,count in options %}
+                    <li class="list-group-item">{{ option }} &mdash; <strong>{{ count }}</strong></li>
+                {% endfor%}
+            </ul>
+            <div class="panel-footer">
+                Total &mdash; <strong>{{total}}</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

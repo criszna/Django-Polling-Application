@@ -1,0 +1,66 @@
+{% extends "base_layout.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block main %}
+<script>
+$(document).on("click",".voted",function(){
+    if($(this).parent().parent().next().css('display').toLowerCase()=='none') {
+         $(this).parent().parent().next().css('display','block');
+    }
+    else {
+        $(this).parent().parent().next().css('display','none')
+    }
+});
+
+</script>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Available Polls</h3>
+            </div>
+
+            <ul class="list-group home">
+                {% for vote in voted %}
+                <li class="list-group-item ">
+                    <strong>{{ vote.poll.snippet }}</strong>
+                    <span class="pull-right">
+                        {% if user.is_superuser %}
+                            <a href="{% url 'poll:edit' vote.poll.id %}" class="btn btn-info btn-xs">Edit</a>
+                            <a href="{% url 'poll:delete' vote.poll.id %}" class="btn btn-info btn-xs">Delete</a>
+                        {% endif %}
+                        <a class="voted btn btn-default btn-xs">voted</a>
+                        <a href="{% url 'poll:results' vote.poll.id %}" class="btn btn-default btn-xs">View Results</a> &nbsp;
+                    </span>
+                </li>
+                <li class="list-group-item vote-detail" style="display:none;">
+                    <p class="opt-voted">
+                        {% for option in vote.poll.options %}
+                            <label>{{forloop.counter}}. {{ option }}</label> &nbsp;
+                        {% endfor %}
+                    </p>
+                    <b class="pull-right" style="color:green;">selected: {{vote.chosen}}</b><br>
+                </li>
+                {% endfor %}
+
+                {% for poll in polls %}
+                <li class="list-group-item">
+                    <strong>{{ poll.snippet }}</strong>
+                    <span class="pull-right">
+                        {% if user.is_superuser %}
+                            <a href="{% url 'poll:edit' poll.id %}" class="btn btn-info btn-xs">Edit</a>
+                            <a href="{% url 'poll:delete' poll.id %}" class="btn btn-info btn-xs">Delete</a>
+                            <a href="{% url 'poll:vote' poll.id %}" class="btn btn-info btn-xs">Vote</a>
+                        {% elif user.is_authenticated %}
+                            <a href="{% url 'poll:vote' poll.id %}" class="btn btn-info btn-xs">Vote</a>
+                        {% endif %}&nbsp;
+                        <a href="{% url 'poll:results' poll.id %}" class="btn btn-default btn-xs">View Results</a> &nbsp;
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

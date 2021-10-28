@@ -1,0 +1,53 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% block title %}Edit Poll{% endblock %}
+
+{% block main %}
+<script src="{% static 'poll.js'%}"></script>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Edit Post <b id="title">{{poll.id}}</b></h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="question">Poll Question</label>
+                            <input type="text" class="form-control" id="question" value="{{poll.question}}">
+                        </div>
+                    </div>
+                </div>
+
+                <a class="btn btn-info" id="add">Add Option</a>&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-info" id="remove">Remove Option</a>
+                <br><br>
+
+                <div id="AddOption">
+                    {% for option in poll.options %}
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control opt" value="{{option}}">
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="row">
+                    <hr />
+                    <div class="col-lg-4">
+                        <button class="btn btn-info" id="create">Save</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base_layout.html' %}
+{% block main %}
+<h3 class="container">Sign up</h3>
+<form class="site-form container" action="{% url 'accounts:signup' %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    <br>
+    <input class="btn btn-warning" type="submit" value="Signup">
+</form>
+{% endblock %}

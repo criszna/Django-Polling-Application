@@ -1,0 +1,109 @@
+.navbar-default, .btn, .form-control, .panel {
+	border-radius: 0;
+}
+.navbar-default {
+    background-color: rgba(245, 245, 220, .7);
+    border-color: rgba(245, 245, 220, .6);
+    box-shadow: 0px 3px 3px 0px #ddd;
+}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+    background-color: rgba(245, 245, 220, .9);
+    border-bottom: 4px solid #ddd;
+}
+.panel-default > .panel-heading {
+    color: #333;
+    background-color: rgba(245, 245, 220, .7);
+    border-color: rgba(245, 245, 220, .6);
+    border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.panel-footer {
+	background-color: rgba(245, 245, 220, .5);
+    border-color: rgba(245, 245, 220, .4);
+}
+.panel {
+	box-shadow: 0px 3px 3px 0px #ddd;
+}
+body{
+    background-color:#FAF9F0;
+}
+.panel-heading,.navbar-default{
+	background-color:#FAF9F4;
+}
+a.navbar-brand, .panel-title {
+	font-weight: bolder;
+}
+.opt{
+	width:300px;
+}
+#AddOption{
+	height:31%;
+	width:350px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+.container-bar {
+  width:100%;
+  background-color: #ddd;
+}
+
+.skills {
+  width:70%;
+  text-align: right;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: white;
+}
+
+.barchart-col1{
+    width:30%;
+    border:1px solid;
+    background-color:#336699;
+    color:white;
+    text-align:center;
+}
+#bar-table td{
+    height:40px;
+    padding-top:4px;
+    padding-bottom:4px;
+}
+#bar-table{
+	width:100%;
+}
+.result,.home,.vote{
+	height:80%;
+	overflow-y:scroll;
+}
+
+.barchart{
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+}
+.voted{
+    background-color:#6ECF5D;
+    color:white;
+}
+.voted:hover{
+    cursor:pointer;
+}
+.opt-voted{
+	width:50%;
+}
+.site-form{
+    margin-top:60px;
+    border:1px solid #C8BC8C;
+    padding:20px;
+    width:40%;
+}
+.site-form input, .site-form textarea{
+    display:block;
+    margin:20px 0 0 0;
+    padding:10px;
+}
